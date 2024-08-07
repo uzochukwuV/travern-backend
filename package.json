@@ -2,12 +2,16 @@
   "name": "food-shop-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "start": "nodemon src/index.ts",
     "dev": "ts-node-dev --no-notify --respawn --exit-child --transpile-only src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "ts-node-dev --transpile-only src/schema.ts",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +22,7 @@
     "class-validator": "^0.14.1",
     "graphql-scalars": "^1.23.0",
     "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
     "reflect-metadata": "^0.2.2",
     "type-graphql": "2.0.0-rc.2"
   },
