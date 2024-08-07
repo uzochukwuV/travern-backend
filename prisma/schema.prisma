@@ -1,11 +1,20 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/client"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  // provider = "postgresql"
+  // url      = env("DATABASE_URL")
+
+  // provider = "sqlite"
+  // url      = "file:./dev.db"
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
+
+
 
 model Shop {
   id        String    @id @default(uuid())
