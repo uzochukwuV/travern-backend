@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Shop {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  name      String
+  logo      String
+  motto     String
+  openHrs   String
+  verified  Boolean?  @default(false)
+  userId    Int?      @unique
+  products  Product[]
+  owner     User?     @relation(fields: [userId], references: [id])
+}
+
+model Product {
+  id          String     @id @default(uuid())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  name        String
+  description String?
+  quantity    Int
+  shopId      String?
+  img         String?
+  shop        Shop?      @relation(fields: [shopId], references: [id])
+  categories  Category[] @relation("CategoryToProduct")
+  orders      Order[]    @relation("OrderToProduct")
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String    @unique
+  img      String    @default("https://images.pexels.com/photos/940302/pexels-photo-940302.jpeg?auto=compress&cs=tinysrgb&w=600")
+  products  Product[] @relation("CategoryToProduct")
+}
+
+model Order {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  userId    Int?
+  customer  User?     @relation(fields: [userId], references: [id])
+  products  Product[] @relation("OrderToProduct")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  email       String   @unique
+  firstName   String?
+  lastName    String?
+  address     String?
+  phoneNumber String?
+  orders      Order[]
+  shop        Shop?
+}

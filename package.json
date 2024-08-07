@@ -1,0 +1,32 @@
+{
+  "name": "food-shop-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --no-notify --respawn --exit-child --transpile-only src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "ts-node-dev --transpile-only src/schema.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "5.17.0",
+    "apollo-server": "^3.13.0",
+    "class-validator": "^0.14.1",
+    "graphql-scalars": "^1.23.0",
+    "nodemailer": "^6.9.14",
+    "reflect-metadata": "^0.2.2",
+    "type-graphql": "2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.2",
+    "@types/ws": "^8.5.12",
+    "nexus": "^1.3.0",
+    "prisma": "5.17.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  }
+}
