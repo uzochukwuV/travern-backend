@@ -2,7 +2,7 @@
   "name": "food-shop-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
     "dev": "ts-node-dev --no-notify --respawn --exit-child --transpile-only src/index.ts",
