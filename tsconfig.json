@@ -1,6 +1,7 @@
 // tsconfig.json
 {
     "compilerOptions": {
+      "outDir": "dist",
       "target": "es2018",
       "module": "commonjs",
       "lib": [
@@ -9,5 +10,10 @@
       ],
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
-    }
+    },
+    "pre-commit": [
+      "ts.check",
+      "build",
+      "add-build"
+  ]
   }

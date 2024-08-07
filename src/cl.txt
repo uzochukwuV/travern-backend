@@ -1,0 +1,10 @@
+POST https://api.graph.cool/simple/v1/swapi
+
+query {
+  allPersons {
+    name
+    films {
+      director
+    }
+  }
+}
